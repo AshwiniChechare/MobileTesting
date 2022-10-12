@@ -34,7 +34,7 @@ public class AndroidBaseClass {
         caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, version);
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, devicename);
         caps.setCapability("enableMultiWindows", true);
-        caps.setCapability(MobileCapabilityType.APP, "C:\\Users\\Dinesh.P\\MobileTesting\\app\\SauceLabs.2.7.1.apk");
+        caps.setCapability(MobileCapabilityType.APP, "C:\\Users\\Ashwini.C\\MobileTesting\\app\\SauceLabs.2.7.1.apk");
         caps.setCapability("appWaitActivity","com.swaglabsmobileapp.MainActivity");
         caps.setCapability(MobileCapabilityType.FULL_RESET, false);
         caps.setCapability(MobileCapabilityType.NO_RESET, true);
