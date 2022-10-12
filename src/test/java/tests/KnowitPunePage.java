@@ -21,18 +21,18 @@ public class KnowitPunePage extends BaseClass {
     protected Dimension windowSize;
 
     @Test
-    public void vlidatePlacementStudentName() throws InterruptedException {
+    public void validatePlacementStudentName() throws InterruptedException {
         driver.findElement(AppiumBy.accessibilityId("Chrome")).click();
-        Thread.sleep(4000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.findElement(By.id("com.android.chrome:id/menu_button")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@content-desc='New tab']")).click();
         driver.findElement(By.id("com.android.chrome:id/search_box_text")).click();
         driver.findElement(By.id("com.android.chrome:id/url_bar")).sendKeys("https://know-it.co.in/");
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-       // Thread.sleep(6000);
-        driver.findElement(By.xpath("//android.widget.Button[@text='Toggle navigation']")).click();
-        driver.findElement(By.xpath("//android.view.View[@text='Available in Classroom as we all as Online mode.']")).click();
+
+        Thread.sleep(6000);
         scroll("DOWN",0.3);
+        scroll1("RIGHT",0.8);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
     }
@@ -66,11 +66,42 @@ public class KnowitPunePage extends BaseClass {
     protected void scroll(String dir, double distance) {
 
         for (int i = 0; i <= 40; i++) {
-            System.out.println(i);
+           // System.out.println(i);
             try {
-                if (driver.findElement(By.xpath("//android.view.View[@text='Dinesh Parate']")).isDisplayed()) {
+                if (driver.findElement(By.xpath("//android.view.View[@text='Welcome to KNOW-IT']")).isDisplayed()) {
                     break;
-                }//android.widget.Button[@text='submit']
+                }
+            } catch (Exception e) {
+                Dimension size = getWindowSize();
+                if (size == null) {
+                    System.out.println("element is not found");
+                }
+                Point midPoint = new Point((int) (size.width * 0.5), (int) (size.height * 0.5));
+                int top = midPoint.y - (int) ((size.height * distance) * 0.5);
+                int bottom = midPoint.y + (int) ((size.height * distance) * 0.5);
+                int left = midPoint.x - (int) ((size.width * distance) * 0.5);
+                int right = midPoint.x + (int) ((size.width * distance) * 0.5);
+                Duration SCROLL_DUR = Duration.ofMillis(1000);
+                if (dir.equalsIgnoreCase("UP")) {
+                    swipe(new Point(midPoint.x, top), new Point(midPoint.x, bottom), SCROLL_DUR);
+                } else if (dir.equalsIgnoreCase("DOWN")) {
+                    swipe(new Point(midPoint.x, bottom), new Point(midPoint.x, top), SCROLL_DUR);
+                } else if (dir.equalsIgnoreCase("LEFT")) {
+                    swipe(new Point(left, midPoint.y), new Point(right, midPoint.y), SCROLL_DUR);
+                } else if(dir.equalsIgnoreCase("RIGHT")) {
+                    swipe(new Point(right, midPoint.y), new Point(left, midPoint.y), SCROLL_DUR);
+                }
+            }
+        }
+    }
+    protected void scroll1(String dir, double distance) {
+
+        for (int i = 0; i <= 40; i++) {
+             System.out.println(i);
+            try {
+                if (driver.findElement(By.xpath("//android.widget.TextView[@text='SWAPNIL PAWAR']")).isDisplayed()) {
+                    break;
+                }
             } catch (Exception e) {
                 Dimension size = getWindowSize();
                 if (size == null) {
