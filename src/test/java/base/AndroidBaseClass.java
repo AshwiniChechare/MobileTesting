@@ -34,7 +34,8 @@ public class AndroidBaseClass {
         caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, version);
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, devicename);
         caps.setCapability("enableMultiWindows", true);
-        caps.setCapability(MobileCapabilityType.APP, "C:\\Users\\Dinesh.P\\MobileTesting\\app\\flipkart.apk");
+        caps.setCapability(MobileCapabilityType.APP, "C:\\Users\\Dinesh.P\\MobileTesting\\app\\SauceLabs.2.7.1.apk");
+        caps.setCapability("appWaitActivity","com.swaglabsmobileapp.MainActivity");
         caps.setCapability(MobileCapabilityType.FULL_RESET, false);
         caps.setCapability(MobileCapabilityType.NO_RESET, true);
         URL url=new URL("http://127.0.0.1:4723/wd/hub");
@@ -44,27 +45,6 @@ public class AndroidBaseClass {
         return driver;
     }
 
-    public void preset() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-        if(driver.findElement(By.xpath("//android.widget.TextView[@text='English'][1]")).isDisplayed())
-        {
-            driver.findElement(By.xpath("//android.widget.TextView[@text='English'][1]")).click();
-            driver.findElement(By.id("com.flipkart.android:id/select_btn")).click();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            //driver.findElement(By.id("com.google.android.gms:id/cancel")).click();
-            driver.findElement(By.xpath("//android.widget.EditText[@content-desc='Phone Number']")).sendKeys("9356736962");
-            //driver.findElement(By.xpath("//android.widget.EditText[@content-desc='Email ID']")).sendKeys("dineshparate25@gmail.com");
-            driver.findElement(By.id("com.flipkart.android:id/button")).click();
-            /* driver.findElement(By.id("com.flipkart.android:id/phone_input")).sendKeys("9356736962");
-            driver.findElement(By.id("com.flipkart.android:id/button")).click();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-            driver.findElement(By.id("com.flipkart.android:id/tv_left_cta")).click();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            driver.findElement(By.xpath("//android.widget.EditText[@content-desc=\"Password\"]")).sendKeys("G00gle@1234");
-            driver.findElement(By.id("com.flipkart.android:id/button")).click();*/
-        }
-        //else if()
 
-    }
 
 }
