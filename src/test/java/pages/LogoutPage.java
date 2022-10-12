@@ -5,12 +5,12 @@ import org.openqa.selenium.By;
 
 public class LogoutPage {
 
-    public void clickontapmenu(AndroidDriver driver)
+    public void clickOnTapMenu(AndroidDriver driver)
     {
         driver.findElement(By.xpath("\t\n" +
                 "//android.view.ViewGroup[@content-desc='test-Menu']")).click();
     }
-    public void clickonLogout(AndroidDriver driver)
+    public void clickOnLogout(AndroidDriver driver)
     {
         driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc='test-LOGOUT']")).click();
     }

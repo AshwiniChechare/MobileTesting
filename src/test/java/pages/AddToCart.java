@@ -17,7 +17,7 @@ public class AddToCart {
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"))"));
     }
 //Test.allTheThings() T-Shirt (Red)
-  public void goToAddToCart(AndroidDriver driver,String text)
+  public void goToCart(AndroidDriver driver,String text)
     {
         List<WebElement> ele=driver.findElements(By.xpath("//android.view.ViewGroup[@content-desc=\"test-ADD TO CART\"]"));
         ele.get(2).click();

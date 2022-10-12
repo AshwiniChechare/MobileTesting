@@ -15,11 +15,11 @@ public class LoginPage {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.findElement(By.xpath("//android.widget.EditText[@content-desc='test-Username']")).sendKeys(username);
     }
-    public void enterpassword(AndroidDriver driver,String password)
+    public void enterPassword(AndroidDriver driver,String password)
     {
         driver.findElement(By.xpath("//android.widget.EditText[@content-desc='test-Password']")).sendKeys(password);
     }
-    public void clickloginbutton(AndroidDriver driver)
+    public void clickLoginButton(AndroidDriver driver)
     {
         driver.findElement(AppiumBy.accessibilityId("test-LOGIN")).click();
     }

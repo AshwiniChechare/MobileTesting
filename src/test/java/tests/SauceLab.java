@@ -31,19 +31,19 @@ public class SauceLab {
     public void login() {
         LoginPage login = new LoginPage();
         login.enterUserName(driver, readConfig.getUsername());
-        login.enterpassword(driver, readConfig.getPassword());
-        login.clickloginbutton(driver);
+        login.enterPassword(driver, readConfig.getPassword());
+        login.clickLoginButton(driver);
     }
 
     @Test(priority = 1)
     public void addToCart() {
         AddToCart add = new AddToCart();
         add.scrollToProduct(driver, readConfig.getSearchProductName());
-        add.goToAddToCart(driver, readConfig.getSearchProductName());
+        add.goToCart(driver, readConfig.getSearchProductName());
     }
 
     @Test(priority = 2)
-    public void orderBook() throws InterruptedException {
+    public void bookOrder() throws InterruptedException {
         BookOrder bookorder = new BookOrder();
         bookorder.clickCheckOut(driver);
         bookorder.fillAddressDetails(driver, readConfig.getFirstName(), readConfig.getLastName(), readConfig.getPincode());
@@ -53,11 +53,11 @@ public class SauceLab {
     }
 
     @Test(priority = 3)
-    public void logout9() {
+    public void logout() {
         LogoutPage logout = new LogoutPage();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        logout.clickontapmenu(driver);
-        logout.clickonLogout(driver);
+        logout.clickOnTapMenu(driver);
+        logout.clickOnLogout(driver);
     }
 
 }
