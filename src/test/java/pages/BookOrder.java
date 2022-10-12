@@ -20,7 +20,7 @@ public class BookOrder {
                 "//android.widget.EditText[@content-desc=\"test-First Name\"]")).sendKeys(fname);
         driver.findElement(By.xpath("\t\n" +
                 "//android.widget.EditText[@content-desc=\"test-Last Name\"]")).sendKeys(lname);
-        driver.findElement(By.xpath("//android.widget.EditText[@content-desc='test-Zip/Postal Code']")).sendKeys(fname);
+        driver.findElement(By.xpath("//android.widget.EditText[@content-desc='test-Zip/Postal Code']")).sendKeys(pincode);
         driver.hideKeyboard();
 
     }

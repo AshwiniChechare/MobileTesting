@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test name="Test" thread-count="5">
         <classes>
-            <class name="tests.Login"></class>
+            <class name="tests.SauceLab"></class>
         </classes>
     </test>
 </suite>

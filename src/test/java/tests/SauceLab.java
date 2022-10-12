@@ -1,8 +1,6 @@
 package tests;
 
 import base.AndroidBaseClass;
-import io.appium.java_client.android.AndroidDriver;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.AddToCart;
@@ -15,7 +13,7 @@ import java.time.Duration;
 
 import static base.AndroidBaseClass.driver;
 
-public class Login {
+public class SauceLab {
 
     //public AndroidDriver driver;
     ReadConfig readConfig = new ReadConfig();
