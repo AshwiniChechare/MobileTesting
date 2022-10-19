@@ -92,7 +92,7 @@ public class AndroidBaseClass extends ObjectsRepo {
         extent.flush();
 
     }
-    public void tearDown()
+    public static void tearDown()
     {
         driver.quit();
     }
