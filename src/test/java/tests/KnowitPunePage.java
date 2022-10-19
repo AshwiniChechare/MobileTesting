@@ -30,7 +30,7 @@ public class KnowitPunePage extends BaseClass {
         driver.findElement(By.id("com.android.chrome:id/url_bar")).sendKeys("https://know-it.co.in/");
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
 
-        Thread.sleep(6000);
+        Thread.sleep(15000);
         scroll("DOWN",0.3);
         scroll1("RIGHT",0.8);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -100,6 +100,7 @@ public class KnowitPunePage extends BaseClass {
              System.out.println(i);
             try {
                 if (driver.findElement(By.xpath("//android.widget.TextView[@text='SWAPNIL PAWAR']")).isDisplayed()) {
+                   System.out.println("The student is found in recent placement of knowit pune institute");
                     break;
                 }
             } catch (Exception e) {
