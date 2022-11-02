@@ -32,7 +32,7 @@ public class BookOrder extends AndroidActions {
                 p_price = ele.getText();
                 actualp_price = converstionofStringToDouble(p_price);
                 sum = sum + actualp_price;
-                System.out.println(actualp_price);
+                System.out.println("Product "+arr[i]+" Price: "+actualp_price);
             } catch (Exception e) {
                 driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + arr[i] + "\"))"));
                 Thread.sleep(10000);
@@ -41,11 +41,11 @@ public class BookOrder extends AndroidActions {
                 p_price = ele.getText();
                 actualp_price = converstionofStringToDouble(p_price);
                 sum = sum + actualp_price;
-                System.out.println(actualp_price);
+                System.out.println("Product "+arr[i]+" Price: "+actualp_price);
 
             }
         }
-        System.out.println(sum);
+        System.out.println("Product Sum : "+sum);
         return sum;
         //android.view.ViewGroup[@content-desc='test-Description']/android.widget.TextView[@text='Sauce Labs Bolt T-Shirt']/parent::android.view.ViewGroup/following-sibling::android.view.ViewGroup[2]/android.widget.TextView
     }
@@ -77,12 +77,12 @@ public class BookOrder extends AndroidActions {
         WebElement ele = driver.findElement(By.xpath("//android.view.ViewGroup/android.widget.TextView[5]"));
         String total = ele.getText();
         double totalvalue = Double.parseDouble(total.substring(13));
-        System.out.println(totalvalue);
+        System.out.println("Total Price : "+ totalvalue);
         try
         {
             Assert.assertEquals(actualsum,totalvalue);
             System.out.println("assertion passed");
-            System.out.println("individual product sum value :"+actualsum+" total value :"+totalvalue);
+            System.out.println("individual product sum value(actual value) :"+actualsum+" total value(expected value) :"+totalvalue);
         }
         catch (Exception e)
         {
