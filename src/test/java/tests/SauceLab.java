@@ -15,7 +15,7 @@ import java.time.Duration;
 import static base.AndroidBaseClass.driver;
 import static utilities.ObjectsRepo.extent;
 
-public class SauceLab extends AndroidBaseClass{
+public class SauceLab extends AndroidBaseClass {
 
     //public AndroidDriver driver;
     ReadConfig readConfig = new ReadConfig();
@@ -37,55 +37,55 @@ public class SauceLab extends AndroidBaseClass{
 
     @Test
     public void login() {
-        test=extent.createTest("LoginTest");
+        test = extent.createTest("LoginTest");
         LoginPage login = new LoginPage();
         login.enterUserName(driver, readConfig.getUsername());
-        test.log(Status.INFO,"User enter username");
+        test.log(Status.INFO, "User enter username");
         login.enterPassword(driver, readConfig.getPassword());
-        test.log(Status.INFO,"User enter password");
+        test.log(Status.INFO, "User enter password");
         login.clickLoginButton(driver);
-        test.log(Status.INFO,"click on login button");
+        test.log(Status.INFO, "click on login button");
     }
 
     @Test(priority = 1)
     public void addToCart() {
-        test=extent.createTest("AddToCartTest");
+        test = extent.createTest("AddToCartTest");
         AddToCart add = new AddToCart();
         add.scrollToProduct(driver, readConfig.getSearchProductName());
-        test.log(Status.INFO,"Scroll to particular productName");
+        test.log(Status.INFO, "Scroll to particular productName");
         add.goToCart(driver, readConfig.getSearchProductName());
-        test.log(Status.INFO,"Go to Cart");
+        test.log(Status.INFO, "Go to Cart");
     }
 
     @Test(priority = 2)
     public void bookOrder() throws InterruptedException {
-        test=extent.createTest("BookOrderTest");
+        test = extent.createTest("BookOrderTest");
         BookOrder bookorder = new BookOrder();
         double sum = bookorder.getProductValue(driver, arr);
         Thread.sleep(5000);
         bookorder.clickCheckOut(driver);
-        test.log(Status.INFO,"Click to Check out button");
+        test.log(Status.INFO, "Click to Check out button");
         bookorder.fillAddressDetails(driver, readConfig.getFirstName(), readConfig.getLastName(), readConfig.getPincode());
-        test.log(Status.INFO,"Fill address details for book order");
+        test.log(Status.INFO, "Fill address details for book order");
         bookorder.clickToContinue(driver);
-        test.log(Status.INFO,"Click to continue for book order");
+        test.log(Status.INFO, "Click to continue for book order");
         Thread.sleep(5000);
         bookorder.assertionCheck(sum);
-        test.log(Status.INFO,"Check the assertion");
+        test.log(Status.INFO, "Check the assertion");
         bookorder.confirmOrder(driver);
-        test.log(Status.INFO,"Click to Confirm Order to book order");
+        test.log(Status.INFO, "Click to Confirm Order to book order");
         Thread.sleep(6000);
     }
 
     @Test(priority = 3)
     public void logout() {
-        test=extent.createTest("LogoutTest");
+        test = extent.createTest("LogoutTest");
         LogoutPage logout = new LogoutPage();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         logout.clickOnTapMenu(driver);
-        test.log(Status.INFO,"Click to Tap menu");
+        test.log(Status.INFO, "Click to Tap menu");
         logout.clickOnLogout(driver);
-        test.log(Status.INFO,"Click to Tap menu log out button");
+        test.log(Status.INFO, "Click to Tap menu log out button");
     }
 
     @AfterMethod
