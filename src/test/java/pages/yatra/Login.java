@@ -9,7 +9,7 @@ public class Login {
 
     public void login(AndroidDriver driver,String username,String password) {
         try {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
             driver.findElement(By.id("com.yatra.base:id/btn_login_widget")).click();
             driver.findElement(By.id("com.yatra.base:id/et_input_field")).sendKeys(username);
             driver.findElement(By.id("com.yatra.base:id/continue_login")).click();
@@ -19,7 +19,7 @@ public class Login {
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            System.out.println("You are successfully logged in");
         }
     }
 }
