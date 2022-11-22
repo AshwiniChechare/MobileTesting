@@ -54,12 +54,14 @@ public class BusBooking {
         }
     }
 
-    public void clickOnFindBuses(AndroidDriver driver) {
+    public void clickOnFindBuses(AndroidDriver driver) throws InterruptedException {
+        Thread.sleep(5000);
         driver.findElement(By.id("com.yatra.base:id/btn_find_buses")).click();
     }
 
-    public void selectBus(AndroidDriver driver) {
-        driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]")).click();
+    public void selectBus(AndroidDriver driver) throws InterruptedException {
+        Thread.sleep(5000);
+        driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]")).click();
 
     }
 
@@ -74,13 +76,36 @@ public class BusBooking {
                 break;
             }
         }
-
-
     }
 
-    public void clickproceedButton(AndroidDriver driver) {
+    public void clickproceedButton(AndroidDriver driver) throws InterruptedException {
         driver.findElement(By.id("com.yatra.base:id/btn_proceed")).click();
+        try {
+            driver.findElement(By.id("android:id/button1")).click();
+        } catch (Exception e) {
+            System.out.println("Data is okay");
+
+        }
+
     }
 
-
+    public void clickOnBoarding(AndroidDriver driver) throws InterruptedException {
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[1]")).click();
+        Thread.sleep(2000);
+        try {
+            driver.findElement(By.id("com.yatra.base:id/img_help")).click();
+        }catch(Exception e)
+        {
+            System.out.println("No need to click here");
+        }
+        driver.findElement(By.id("com.yatra.base:id/spinner_title")).click();
+        driver.findElement(By.xpath("//android.widget.TextView[@text='Mr']")).click();
+        driver.findElement(By.id("com.yatra.base:id/ed_text_full_name")).sendKeys("Dinesh Parate");
+        driver.findElement(By.id("com.yatra.base:id/spinner_age")).click();
+        driver.findElement(By.xpath("//android.widget.TextView[@text='17 Yrs.']")).click();
+        driver.findElement(By.id("com.yatra.base:id/btn_proceed")).click();
+        Thread.sleep(5000);
+        driver.findElement(By.id("com.yatra.base:id/btn_pay")).click();
+    }
 }
