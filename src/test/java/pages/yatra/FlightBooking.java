@@ -15,16 +15,7 @@ import static base.BaseClass.driver;
 public class FlightBooking {
 
 
-    public void preset(AndroidDriver driver) {
-        try
-        {
-            driver.findElement(By.id("com.android.permissioncontroller:id/permission_allow_button")).click();
-        }
-        catch (Exception e)
-        {
-            System.out.println("presetting is done");
-        }
-    }
+
 
     public void selectDestination(AndroidDriver driver, String fromText, String destcity) throws InterruptedException {
         if (fromText == destcity) {
