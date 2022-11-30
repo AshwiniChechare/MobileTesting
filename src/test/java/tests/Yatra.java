@@ -6,10 +6,7 @@ import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import pages.yatra.BusBooking;
-import pages.yatra.FlightBooking;
-import pages.yatra.HotelsBooking;
-import pages.yatra.Login;
+import pages.yatra.*;
 
 import java.time.Duration;
 
@@ -50,7 +47,7 @@ public class Yatra extends BaseClass {
     }
 
     public String selectBookingOptionText() {
-        return "Hotel";
+        return "train";
     }
 
     @Test(priority = 1)
@@ -90,7 +87,16 @@ public class Yatra extends BaseClass {
             test = extent.createTest("Hotel Test");
             HotelsBooking hotel = new HotelsBooking();
             hotel.clickOnHotelsIcon(driver, "Manali");
+            hotel.enterDetails(driver,"Dinesh","Parate");
             test.log(Status.INFO, "HotelsBooking test successfully run");
+        }
+        else if(text=="train")
+        {
+            driver.findElement(By.id("com.yatra.base:id/iv_right_arrow")).click();
+            test = extent.createTest("Train Test");
+            TrainsBooking train=new TrainsBooking();
+            train.trainBooking(driver,"Nagpur","Mumbai");
+            test.log(Status.INFO, "Train Booking test case successfully run");
         }
 
     }

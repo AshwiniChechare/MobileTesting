@@ -46,7 +46,7 @@ public class BaseClass extends ObjectsRepo {
         caps.setCapability(MobileCapabilityType.NO_RESET, true);
 
         URL url = new URL("http://127.0.0.1:4723/wd/hub");
-        driver = new AndroidDriver(url, caps);
+        driver = new    AndroidDriver(url, caps);
         //driver = new AppiumDriver<MobileElement>(url, caps);
         return driver;
 
