@@ -13,8 +13,7 @@ import java.time.Duration;
 public class Yatra extends BaseClass {
 
     @BeforeTest
-    public void report() {
-        BaseClass.startReport();
+    public void report() {BaseClass.startReport();
     }
 
     @BeforeTest
@@ -47,7 +46,7 @@ public class Yatra extends BaseClass {
     }
 
     public String selectBookingOptionText() {
-        return "train";
+        return "cabs/rides";
     }
 
     @Test(priority = 1)
@@ -97,6 +96,20 @@ public class Yatra extends BaseClass {
             TrainsBooking train=new TrainsBooking();
             train.trainBooking(driver,"Nagpur","Mumbai");
             test.log(Status.INFO, "Train Booking test case successfully run");
+        }
+        else if(text=="cabs/rides")
+        {
+            CabRideBooking cabs=new CabRideBooking();
+            cabs.clickOnCabsIcon(driver);
+            test=extent.createTest("cabs/rides Test");
+            cabs.selectPickuPoint(driver,"Nagpur");
+            cabs.selectDropPoint(driver,"Mumbai");
+            cabs.selectPickupDate(driver);
+            cabs.clickOnSearchButton(driver);
+            cabs.clickOnBookingCar(driver);
+            cabs.scrollToButton(driver);
+            cabs.clickOnBookButton(driver);
+            cabs.enterDetails(driver,"Dinesh","Parate");
         }
 
     }
