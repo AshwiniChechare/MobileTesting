@@ -13,7 +13,8 @@ import java.time.Duration;
 public class Yatra extends BaseClass {
 
     @BeforeTest
-    public void report() {BaseClass.startReport();
+    public void report() {
+        BaseClass.startReport();
     }
 
     @BeforeTest
@@ -48,6 +49,12 @@ public class Yatra extends BaseClass {
     public String selectBookingOptionText() {
         return "cabs/rides";
     }
+
+    public String selectoption() {
+        return "airport";
+    }
+
+    ;
 
     @Test(priority = 1)
     public void BookingTestCase() throws InterruptedException {
@@ -86,30 +93,44 @@ public class Yatra extends BaseClass {
             test = extent.createTest("Hotel Test");
             HotelsBooking hotel = new HotelsBooking();
             hotel.clickOnHotelsIcon(driver, "Manali");
-            hotel.enterDetails(driver,"Dinesh","Parate");
+            hotel.enterDetails(driver, "Dinesh", "Parate");
             test.log(Status.INFO, "HotelsBooking test successfully run");
-        }
-        else if(text=="train")
-        {
+        } else if (text == "train") {
             driver.findElement(By.id("com.yatra.base:id/iv_right_arrow")).click();
             test = extent.createTest("Train Test");
-            TrainsBooking train=new TrainsBooking();
-            train.trainBooking(driver,"Nagpur","Mumbai");
+            TrainsBooking train = new TrainsBooking();
+            train.trainBooking(driver, "Nagpur", "Mumbai");
             test.log(Status.INFO, "Train Booking test case successfully run");
-        }
-        else if(text=="cabs/rides")
-        {
-            CabRideBooking cabs=new CabRideBooking();
+        } else if (text == "cabs/rides") {
+            CabRideBooking cabs = new CabRideBooking();
             cabs.clickOnCabsIcon(driver);
-            test=extent.createTest("cabs/rides Test");
-            cabs.selectPickuPoint(driver,"Nagpur");
-            cabs.selectDropPoint(driver,"Mumbai");
-            cabs.selectPickupDate(driver);
-            cabs.clickOnSearchButton(driver);
-            cabs.clickOnBookingCar(driver);
-            cabs.scrollToButton(driver);
-            cabs.clickOnBookButton(driver);
-            cabs.enterDetails(driver,"Dinesh","Parate");
+            test = extent.createTest("cabs/rides Test");
+            String rideoption = selectoption();
+            if (rideoption == "rental") {
+
+                cabs.selectPickuPoint(driver, "Nagpur");
+                cabs.selectDropPoint(driver, "Mumbai");
+                cabs.selectPickupDate(driver);
+                cabs.clickOnSearchButton(driver);
+                cabs.clickOnBookingCar(driver);
+                cabs.scrollToButton(driver);
+                cabs.clickOnBookButton(driver);
+                cabs.enterDetails(driver, "Dinesh", "Parate");
+                cabs.clickOnDebitCard(driver);
+                test.log(Status.INFO, "cabs/rides Booking test case successfully run");
+            } else if (rideoption == "airport") {
+                cabs.clickToAirport(driver);
+                cabs.pickupLocation(driver);
+                cabs.dropLocation(driver);
+                cabs.clickOnSearchCab(driver);
+                cabs.clickOnBookingCar(driver);
+                cabs.scrollToButton(driver);
+                cabs.clickOnBookButton(driver);
+                cabs.enterDetails(driver, "Dinesh", "Parate");
+                cabs.clickOnDebitCard(driver);
+                Thread.sleep(10000);
+                test.log(Status.INFO, "cabs/rides Booking from airport test case successfully run");
+            }
         }
 
     }
