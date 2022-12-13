@@ -99,4 +99,33 @@ public class CabRideBooking {
         //driver.findElement(By.id("com.yatra.base:id/btn_continue")).click();
     }
 
+
+    public void clickToAirport(AndroidDriver driver) throws InterruptedException {
+        driver.findElement(By.xpath("//android.widget.LinearLayout[@content-desc=\"AirPort Transfer\"]/android.widget.TextView")).click();
+        Thread.sleep(5000);
+    }
+
+    public void pickupLocation(AndroidDriver driver)
+    {
+        driver.findElement(By.id("com.yatra.base:id/pickup_location_container")).click();
+        driver.findElement(By.className("android.widget.EditText")).sendKeys("Nagpur");
+        driver.findElement(By.xpath("//*[contains(@text,'Sonegaon')]")).click();
+    }
+
+    public void dropLocation(AndroidDriver driver)
+    {
+        driver.findElement(By.id("com.yatra.base:id/drop_location_container")).click();
+        driver.findElement(By.className("android.widget.EditText")).sendKeys("Nagpur Bus stand");
+        driver.findElement(By.xpath("//android.widget.TextView[@text='Nagpur Bus Stand']")).click();
+    }
+
+    public void clickOnSearchCab(AndroidDriver driver) throws InterruptedException {
+        driver.findElement(By.className("android.widget.Button")).click();
+        Thread.sleep(5000);
+    }
+
+    public void clickOnDebitCard(AndroidDriver driver) throws InterruptedException {
+        driver.findElement(By.xpath("//android.widget.TextView[@text='Debit Card']")).click();
+        Thread.sleep(5000);
+    }
 }
